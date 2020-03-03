@@ -1,0 +1,214 @@
+<pre><font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ ls /sys/kernel/security/ima
+ascii_runtime_measurements   runtime_measurements_count
+binary_runtime_measurements  violations
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo cat /sys/kernel/security/ima/runtime_measurements_count
+[sudo] password for ece446579: 
+1194
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo less /sys/kernel/security/ima/ascii_runtime_measurements
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo cat /sys/kernel/security/ima/violations
+0
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ wget -o ltp-ima-standalone-v2.tar.gz
+wget: missing URL
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help&apos; for more options.
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ wget -o ltp-ima-standalone-v2.tar.gz http://downloads.sf.net/project/linux-ima/linux-ima/ltp-ima-standalone-v2.tar.gz
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ tar -xvzf ltp-ima-standalone-v2.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ wget -o ltp-ima-standalone-v2.tar.gz http://downloads.sf.net/project/linux-ima/linux-ima/ltp-ima-standalone-v2.tar.gz
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ tar -xvzf ltp-ima-standalone-v2.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ cd ima-tests
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make
+
+Command &apos;make&apos; not found, but can be installed with:
+
+sudo apt install make      
+sudo apt install make-guile
+
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo make install
+[sudo] password for ece446579: 
+sudo: make: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo apt install make
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Suggested packages:
+  make-doc
+The following NEW packages will be installed:
+  make
+0 upgraded, 1 newly installed, 0 to remove and 30 not upgraded.
+Need to get 154 kB of archives.
+After this operation, 381 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu bionic/main amd64 make amd64 4.1-9.1ubuntu1 [154 kB]
+Fetched 154 kB in 0s (2,139 kB/s)
+Selecting previously unselected package make.
+(Reading database ... 165566 files and directories currently installed.)
+Preparing to unpack .../make_4.1-9.1ubuntu1_amd64.deb ...
+Unpacking make (4.1-9.1ubuntu1) ...
+Setting up make (4.1-9.1ubuntu1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+sudo: /usr/local/share/ima_measure: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ cd..
+cd..: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ cd ..
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+sudo: /usr/local/share/ima_measure: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ ^C
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo -c  /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-AknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-AknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-AbEHknPS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] [VAR=value] [-i|-s]
+            [&lt;command&gt;]
+usage: sudo -e [-AknS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] file ...
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ su -c  /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+su: unrecognized option &apos;--validate&apos;
+Usage: su [options] [LOGIN]
+
+Options:
+  -c, --command COMMAND         pass COMMAND to the invoked shell
+  -h, --help                    display this help message and exit
+  -, -l, --login                make the shell a login shell
+  -m, -p,
+  --preserve-environment        do not reset environment variables, and
+                                keep the same shell
+  -s, --shell SHELL             use SHELL instead of the default in passwd
+
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo -c  /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-AknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-AknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-AbEHknPS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] [VAR=value] [-i|-s]
+            [&lt;command&gt;]
+usage: sudo -e [-AknS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] file ...
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements&apos; --validate
+sudo: /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo -c  &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements&apos; --validate 
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-AknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-AknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-AbEHknPS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] [VAR=value] [-i|-s]
+            [&lt;command&gt;]
+usage: sudo -e [-AknS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] file ...
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo apt install make
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+make is already the newest version (4.1-9.1ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ cd ima-tests
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make
+gcc -g -O2 -DDEBUG   -o ima_boot_aggregate ima_boot_aggregate.c -lcrypto -lssl ltp-tst-replacement.c 
+make: gcc: Command not found
+Makefile:16: recipe for target &apos;ima_boot_aggregate&apos; failed
+make: *** [ima_boot_aggregate] Error 127
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo make
+gcc -g -O2 -DDEBUG   -o ima_boot_aggregate ima_boot_aggregate.c -lcrypto -lssl ltp-tst-replacement.c 
+make: gcc: Command not found
+Makefile:16: recipe for target &apos;ima_boot_aggregate&apos; failed
+make: *** [ima_boot_aggregate] Error 127
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make
+gcc -g -O2 -DDEBUG   -o ima_boot_aggregate ima_boot_aggregate.c -lcrypto -lssl ltp-tst-replacement.c 
+make: gcc: Command not found
+Makefile:16: recipe for target &apos;ima_boot_aggregate&apos; failed
+make: *** [ima_boot_aggregate] Error 127
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo -c  &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-AknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-AknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-AbEHknPS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] [VAR=value] [-i|-s]
+            [&lt;command&gt;]
+usage: sudo -e [-AknS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] file ...
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo  &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+sudo: /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+sudo: /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo make install
+cp -t /usr/local/share/ ima_boot_aggregate ima_measure ima_mmap
+cp: cannot stat &apos;ima_boot_aggregate&apos;: No such file or directory
+cp: cannot stat &apos;ima_measure&apos;: No such file or directory
+cp: cannot stat &apos;ima_mmap&apos;: No such file or directory
+Makefile:22: recipe for target &apos;install&apos; failed
+make: *** [install] Error 1
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ cd ..
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ sudo make install
+make: *** No rule to make target &apos;install&apos;.  Stop.
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ cd ima-tests
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make
+gcc -g -O2 -DDEBUG   -o ima_boot_aggregate ima_boot_aggregate.c -lcrypto -lssl ltp-tst-replacement.c 
+make: gcc: Command not found
+Makefile:16: recipe for target &apos;ima_boot_aggregate&apos; failed
+make: *** [ima_boot_aggregate] Error 127
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo apt install make
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+make is already the newest version (4.1-9.1ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make
+gcc -g -O2 -DDEBUG   -o ima_boot_aggregate ima_boot_aggregate.c -lcrypto -lssl ltp-tst-replacement.c 
+make: gcc: Command not found
+Makefile:16: recipe for target &apos;ima_boot_aggregate&apos; failed
+make: *** [ima_boot_aggregate] Error 127
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo make instlal
+make: *** No rule to make target &apos;instlal&apos;.  Stop.
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo make install
+cp -t /usr/local/share/ ima_boot_aggregate ima_measure ima_mmap
+cp: cannot stat &apos;ima_boot_aggregate&apos;: No such file or directory
+cp: cannot stat &apos;ima_measure&apos;: No such file or directory
+cp: cannot stat &apos;ima_mmap&apos;: No such file or directory
+Makefile:22: recipe for target &apos;install&apos; failed
+make: *** [install] Error 1
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make install
+cp -t /usr/local/share/ ima_boot_aggregate ima_measure ima_mmap
+cp: cannot stat &apos;ima_boot_aggregate&apos;: No such file or directory
+cp: cannot stat &apos;ima_measure&apos;: No such file or directory
+cp: cannot stat &apos;ima_mmap&apos;: No such file or directory
+Makefile:22: recipe for target &apos;install&apos; failed
+make: *** [install] Error 1
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ make
+gcc -g -O2 -DDEBUG   -o ima_boot_aggregate ima_boot_aggregate.c -lcrypto -lssl ltp-tst-replacement.c 
+make: gcc: Command not found
+Makefile:16: recipe for target &apos;ima_boot_aggregate&apos; failed
+make: *** [ima_boot_aggregate] Error 127
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ cd .
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ cd ..
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ ls
+<font color="#729FCF"><b>Desktop</b></font>    <font color="#729FCF"><b>Downloads</b></font>         <font color="#729FCF"><b>ima-tests</b></font>  <font color="#EF2929"><b>ltp-ima-standalone-v2.tar.gz</b></font>    <font color="#729FCF"><b>Music</b></font>     <font color="#729FCF"><b>Public</b></font>     <font color="#729FCF"><b>Videos</b></font>
+<font color="#729FCF"><b>Documents</b></font>  examples.desktop  <font color="#729FCF"><b>Lab1_1</b></font>     ltp-ima-standalone-v2.tar.gz.1  <font color="#729FCF"><b>Pictures</b></font>  <font color="#729FCF"><b>Templates</b></font>
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~</b></font>$ cd ima-tests
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo apt install make
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+make is already the newest version (4.1-9.1ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+sudo: /usr/local/share/ima_measure: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ su -c &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+Password: 
+su: Authentication failure
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ su -c &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+Password: 
+su: Authentication failure
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate
+sudo: /usr/local/share/ima_measure: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+sudo: /usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate: command not found
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ sudo -c  &apos;/usr/local/share/ima_measure /sys/kernel/security/ima/binary_runtime_measurements --validate&apos;
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-AknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-AknS] [-g group] [-h host] [-p prompt] [-U user] [-u user] [command]
+usage: sudo [-AbEHknPS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] [VAR=value] [-i|-s]
+            [&lt;command&gt;]
+usage: sudo -e [-AknS] [-r role] [-t type] [-C num] [-g group] [-h host] [-p prompt] [-T timeout] [-u user] file ...
+<font color="#8AE234"><b>ece446579@ece446579-STK2M364CC</b></font>:<font color="#729FCF"><b>~/ima-tests</b></font>$ 
+</pre>
